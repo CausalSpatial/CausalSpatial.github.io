@@ -115,18 +115,27 @@
           <div class="column has-text-centered">
             <h1 class="title is-1 publication-title">CausalSpatial: A Benchmark for Object-Centric Causal Spatial Reasoning</h1>
             <div class="is-size-5 publication-authors">
-              <span class="author-block">Wenxin Ma,</span>
-              <span class="author-block">Chenlong Wang,</span>
-              <span class="author-block">Ruisheng Yuan,</span>
-              <span class="author-block">Hao Chen,</span>
-              <span class="author-block">Nanru Dai,</span>
-              <span class="author-block">S. Kevin Zhou,</span>
-              <span class="author-block">Yijun Yang,</span>
-              <span class="author-block">Alan Yuille,</span>
-              <span class="author-block">Jieneng Chen</span>
+              <span class="author-block">Wenxin Ma<sup>*1,2</sup>,</span>
+              <span class="author-block">Chenlong Wang<sup>*1</sup>,</span>
+              <span class="author-block">Ruisheng Yuan<sup>*1</sup>,</span>
+              <span class="author-block">Hao Chen<sup>1</sup>,</span>
+              <span class="author-block">Nanru Dai<sup>1</sup>,</span>
+              <span class="author-block">S. Kevin Zhou<sup>2</sup>,</span>
+              <span class="author-block">Yijun Yang<sup>3</sup>,</span>
+              <span class="author-block">Alan Yuille<sup>1</sup>,</span>
+              <span class="author-block">Jieneng Chen<sup>†1</sup></span>
             </div>
             <div class="is-size-6 publication-authors" style="margin-top: 0.5rem;">
-              <span class="publication-venue">arXiv 2026</span>
+              <span class="author-block"><sup>1</sup>Johns Hopkins University</span>&nbsp;&nbsp;
+              <span class="author-block"><sup>2</sup>USTC</span>&nbsp;&nbsp;
+              <span class="author-block"><sup>3</sup>HKUST</span>
+            </div>
+            <div class="is-size-7 publication-authors" style="margin-top: 0.25rem; color: #666;">
+              <span><sup>*</sup>Equal contribution</span>&nbsp;&nbsp;
+              <span><sup>†</sup>Corresponding author</span>
+            </div>
+            <div class="is-size-6 publication-authors" style="margin-top: 0.5rem;">
+              <span class="publication-venue">ICLR 2026 Workshop</span>
             </div>
             <div class="column has-text-centered">
               <div class="publication-links">
@@ -152,6 +161,14 @@
                   class="external-link button is-normal is-rounded is-dark">
                     <span class="icon"><i class="fab fa-github"></i></span>
                     <span>Code</span>
+                  </a>
+                </span>
+                <!-- Dataset -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/Mwxinnn/CausalSpatial" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-database"></i></span>
+                    <span>Dataset</span>
                   </a>
                 </span>
               </div>
@@ -224,7 +241,7 @@
         <div class="column is-half">
           <div class="task-card">
             <img src="static/images/collision.gif" alt="Collision task example"
-                 style="width: 100%; border-radius: 8px; margin-bottom: 1rem;"/>
+                 style="border-radius: 8px; margin-bottom: 1rem;"/>
             <h4>💥 Collision</h4>
             <p>
               Will two objects collide if one is set in motion? Models must reason about object trajectories
@@ -235,7 +252,7 @@
         <div class="column is-half">
           <div class="task-card">
             <img src="static/images/com.gif" alt="Compatibility task example"
-                 style="width: 100%; border-radius: 8px; margin-bottom: 1rem;"/>
+                 style="border-radius: 8px; margin-bottom: 1rem;"/>
             <h4>📦 Compatibility</h4>
             <p>
               Can a target object fit inside or on top of another object? Requires understanding of relative
@@ -246,7 +263,7 @@
         <div class="column is-half">
           <div class="task-card">
             <img src="static/images/cup.gif" alt="Occlusion task example"
-                 style="width: 100%; border-radius: 8px; margin-bottom: 1rem;"/>
+                 style="border-radius: 8px; margin-bottom: 1rem;"/>
             <h4>🔭 Occlusion</h4>
             <p>
               Will moving an object cause another to become hidden? Tests understanding of line-of-sight
@@ -257,7 +274,7 @@
         <div class="column is-half">
           <div class="task-card">
             <img src="static/images/billiards.gif" alt="Trajectory task example"
-                 style="width: 100%; border-radius: 8px; margin-bottom: 1rem;"/>
+                 style="border-radius: 8px; margin-bottom: 1rem;"/>
             <h4>🛤️ Trajectory</h4>
             <p>
               What path will a displaced object follow? Models must predict motion trajectories given
@@ -407,7 +424,7 @@
       <!-- Quantitative Results -->
       <h3 class="title is-4 has-text-centered" style="margin-top: 3rem; margin-bottom: 1.5rem;">Quantitative Results</h3>
       <div class="columns is-centered">
-        <div class="column is-four-fifths">
+        <div class="column is-three-fifths">
           <figure class="image">
             <img src="static/images/Pipeline-Results_page_1.png" alt="COW quantitative results table"
                  style="border-radius: 12px; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);"/>
