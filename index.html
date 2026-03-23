@@ -346,6 +346,74 @@
           </figure>
         </div>
       </div>
+
+      <!-- Qualitative Examples -->
+      <h3 class="title is-4 has-text-centered" style="margin-top: 3rem; margin-bottom: 0.75rem;">Qualitative Examples</h3>
+      <p class="has-text-centered has-text-grey" style="margin-bottom: 2rem;">
+        COW generates a short simulation video for each query. The MLLM then answers by watching the video
+        rather than relying on text-only reasoning. Below are examples across all four task types.
+      </p>
+      <div class="columns is-multiline is-centered">
+        <!-- Collision -->
+        <div class="column is-half">
+          <div class="task-card">
+            <img src="static/images/cow_examples/cow_collision.gif" alt="COW Collision example"
+                 style="width: 100%; border-radius: 8px; margin-bottom: 0.75rem;"/>
+            <h4>💥 Collision</h4>
+            <p class="is-size-7 has-text-grey" style="margin-bottom: 0.5rem;">
+              <em>Q: From the car's perspective, would it bump into something if it proceeds forward?</em>
+            </p>
+            <p class="is-size-7"><strong>A: (B) No</strong></p>
+          </div>
+        </div>
+        <!-- Compatibility -->
+        <div class="column is-half">
+          <div class="task-card">
+            <img src="static/images/cow_examples/cow_compatibility.gif" alt="COW Compatibility example"
+                 style="width: 100%; border-radius: 8px; margin-bottom: 0.75rem;"/>
+            <h4>📦 Compatibility</h4>
+            <p class="is-size-7 has-text-grey" style="margin-bottom: 0.5rem;">
+              <em>Q: If the banana falls freely from its current position, can it fit into the wooden bowl?</em>
+            </p>
+            <p class="is-size-7"><strong>A: (C) No</strong></p>
+          </div>
+        </div>
+        <!-- Occlusion -->
+        <div class="column is-half">
+          <div class="task-card">
+            <img src="static/images/cow_examples/cow_occlusion.gif" alt="COW Occlusion example"
+                 style="width: 100%; border-radius: 8px; margin-bottom: 0.75rem;"/>
+            <h4>🔭 Occlusion</h4>
+            <p class="is-size-7 has-text-grey" style="margin-bottom: 0.5rem;">
+              <em>Q: If the chair moves backward by the distance of one chair, would the potted plant on the table be revealed or occluded?</em>
+            </p>
+            <p class="is-size-7"><strong>A: (A) Revealed</strong></p>
+          </div>
+        </div>
+        <!-- Trajectory -->
+        <div class="column is-half">
+          <div class="task-card">
+            <img src="static/images/cow_examples/cow_trajectory.gif" alt="COW Trajectory example"
+                 style="width: 100%; border-radius: 8px; margin-bottom: 0.75rem;"/>
+            <h4>🛤️ Trajectory</h4>
+            <p class="is-size-7 has-text-grey" style="margin-bottom: 0.5rem;">
+              <em>Q: If the billiard ball moves in the direction of the red arrow, will any ball go into the pocket and score?</em>
+            </p>
+            <p class="is-size-7"><strong>A: (A) No</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quantitative Results -->
+      <h3 class="title is-4 has-text-centered" style="margin-top: 3rem; margin-bottom: 1.5rem;">Quantitative Results</h3>
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <figure class="image">
+            <img src="static/images/Pipeline-Results_page_1.png" alt="COW quantitative results table"
+                 style="border-radius: 12px; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);"/>
+          </figure>
+        </div>
+      </div>
     </div>
   </section>
 
