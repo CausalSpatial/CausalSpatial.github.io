@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="CausalSpatial: A Benchmark for Object-Centric Causal Spatial Reasoning">
+  <meta name="description" content="CausalSpatial is a diagnostic benchmark evaluating whether MLLMs can anticipate consequences of object motions in 3D scenes across four tasks: Collision, Compatibility, Occlusion, and Trajectory.">
+  <meta name="keywords" content="causal spatial reasoning, multimodal large language models, 3D scene understanding, benchmark, computer vision, physical reasoning">
+  <meta name="author" content="Wenxin Ma, Chenlong Wang, Ruisheng Yuan, Hao Chen, Nanru Dai, S. Kevin Zhou, Yijun Yang, Alan Yuille, Jieneng Chen">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CausalSpatial">
+  <meta property="og:title" content="CausalSpatial: A Benchmark for Object-Centric Causal Spatial Reasoning">
+  <meta property="og:description" content="CausalSpatial is a diagnostic benchmark evaluating whether MLLMs can anticipate consequences of object motions in 3D scenes. Humans score 84% while GPT-5 achieves only 54%.">
+  <meta property="og:url" content="https://causalspatial.github.io">
+  <meta property="og:image" content="https://causalspatial.github.io/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="CausalSpatial Benchmark - Research Preview">
+  <meta property="article:published_time" content="2026-01-19T00:00:00.000Z">
+  <meta property="article:author" content="Wenxin Ma">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="Causal Reasoning">
+  <meta property="article:tag" content="Spatial Reasoning">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CausalSpatial: A Benchmark for Object-Centric Causal Spatial Reasoning">
+  <meta name="twitter:description" content="CausalSpatial is a diagnostic benchmark evaluating whether MLLMs can anticipate consequences of object motions in 3D scenes. Humans score 84% while GPT-5 achieves only 54%.">
+  <meta name="twitter:image" content="https://causalspatial.github.io/static/images/social_preview.png">
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="CausalSpatial: A Benchmark for Object-Centric Causal Spatial Reasoning">
+  <meta name="citation_author" content="Ma, Wenxin">
+  <meta name="citation_author" content="Wang, Chenlong">
+  <meta name="citation_author" content="Yuan, Ruisheng">
+  <meta name="citation_author" content="Chen, Hao">
+  <meta name="citation_author" content="Dai, Nanru">
+  <meta name="citation_author" content="Zhou, S. Kevin">
+  <meta name="citation_author" content="Yang, Yijun">
+  <meta name="citation_author" content="Yuille, Alan">
+  <meta name="citation_author" content="Chen, Jieneng">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_arxiv_id" content="2601.13304">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2601.13304">
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <title>CausalSpatial: A Benchmark for Object-Centric Causal Spatial Reasoning</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-slider@2.0.4/dist/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/bulma-slider@2.0.4/dist/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "CausalSpatial: A Benchmark for Object-Centric Causal Spatial Reasoning",
+    "description": "CausalSpatial is a diagnostic benchmark evaluating whether multimodal large language models can anticipate consequences of object motions in 3D scenes across four tasks: Collision, Compatibility, Occlusion, and Trajectory.",
+    "author": [
+      {"@type": "Person", "name": "Wenxin Ma"},
+      {"@type": "Person", "name": "Chenlong Wang"},
+      {"@type": "Person", "name": "Ruisheng Yuan"},
+      {"@type": "Person", "name": "Hao Chen"},
+      {"@type": "Person", "name": "Nanru Dai"},
+      {"@type": "Person", "name": "S. Kevin Zhou"},
+      {"@type": "Person", "name": "Yijun Yang"},
+      {"@type": "Person", "name": "Alan Yuille"},
+      {"@type": "Person", "name": "Jieneng Chen"}
+    ],
+    "datePublished": "2026-01-19",
+    "url": "https://causalspatial.github.io",
+    "keywords": ["causal spatial reasoning", "multimodal LLMs", "3D scene understanding", "benchmark", "computer vision"],
+    "abstract": "Humans can look at a static scene and instantly predict what happens next -- will moving this object cause a collision? We call this ability Causal Spatial Reasoning. However, current multimodal large language models (MLLMs) cannot do this, as they remain largely restricted to static spatial perception, struggling to answer what-if questions in a 3D scene. We introduce CausalSpatial, a diagnostic benchmark evaluating whether models can anticipate consequences of object motions across four tasks: Collision, Compatibility, Occlusion, and Trajectory.",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+  }
+  </script>
+</head>
+<body>
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+
+  <!-- Hero / Title Section -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">CausalSpatial: A Benchmark for Object-Centric Causal Spatial Reasoning</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Wenxin Ma,</span>
+              <span class="author-block">Chenlong Wang,</span>
+              <span class="author-block">Ruisheng Yuan,</span>
+              <span class="author-block">Hao Chen,</span>
+              <span class="author-block">Nanru Dai,</span>
+              <span class="author-block">S. Kevin Zhou,</span>
+              <span class="author-block">Yijun Yang,</span>
+              <span class="author-block">Alan Yuille,</span>
+              <span class="author-block">Jieneng Chen</span>
+            </div>
+            <div class="is-size-6 publication-authors" style="margin-top: 0.5rem;">
+              <span class="publication-venue">arXiv 2026</span>
+            </div>
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Paper PDF -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2601.13304" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <!-- arXiv -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2601.13304" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Code -->
+                <span class="link-block">
+                  <a href="https://github.com/CausalSpatial/CausalSpatial" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaser Image -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <figure class="image" style="border-radius: 16px; overflow: hidden; box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);">
+          <img src="static/images/Benchmark_page_1.png" alt="CausalSpatial benchmark overview showing four task categories"
+               style="border-radius: 16px;"/>
+        </figure>
+        <h2 class="subtitle has-text-centered" style="margin-top: 1.5rem;">
+          <strong>CausalSpatial</strong> is a diagnostic benchmark that evaluates whether multimodal large language models
+          (MLLMs) can anticipate the physical consequences of object movements in 3D scenes &mdash; a capability we call
+          <em>Causal Spatial Reasoning</em>.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Humans can look at a static scene and instantly predict what happens next &mdash; will moving this object cause
+              a collision? We call this ability <strong>Causal Spatial Reasoning</strong>. However, current multimodal large
+              language models (MLLMs) cannot do this, as they remain largely restricted to static spatial perception,
+              struggling to answer &ldquo;what-if&rdquo; questions in a 3D scene.
+            </p>
+            <p>
+              We introduce <strong>CausalSpatial</strong>, a diagnostic benchmark evaluating whether models can anticipate
+              consequences of object motions across four tasks: <em>Collision</em>, <em>Compatibility</em>,
+              <em>Occlusion</em>, and <em>Trajectory</em>. Results expose a severe gap: <strong>humans score 84%</strong>
+              while <strong>GPT-5 achieves only 54%</strong>.
+            </p>
+            <p>
+              Why do MLLMs fail? Our analysis uncovers a fundamental deficiency: models over-rely on textual
+              chain-of-thought reasoning that drifts from visual evidence, producing fluent but spatially ungrounded
+              hallucinations. To address this, we propose the <strong>Causal Object World (COW)</strong> model, a framework
+              that externalizes the simulation process by generating videos of hypothetical dynamics. With explicit visual
+              cues of causality, COW enables models to ground their reasoning in physical reality rather than linguistic
+              priors. We make the dataset and code publicly available.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benchmark Tasks -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Benchmark Tasks</h2>
+      <p class="has-text-centered has-text-grey" style="margin-bottom: 2.5rem;">
+        CausalSpatial covers four complementary causal spatial reasoning tasks, each probing a different
+        aspect of physical scene understanding.
+      </p>
+      <div class="columns is-multiline is-centered">
+        <div class="column is-half">
+          <div class="task-card">
+            <img src="static/images/collision.gif" alt="Collision task example"
+                 style="width: 100%; border-radius: 8px; margin-bottom: 1rem;"/>
+            <h4>💥 Collision</h4>
+            <p>
+              Will two objects collide if one is set in motion? Models must reason about object trajectories
+              and spatial overlap in 3D.
+            </p>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="task-card">
+            <img src="static/images/com.gif" alt="Compatibility task example"
+                 style="width: 100%; border-radius: 8px; margin-bottom: 1rem;"/>
+            <h4>📦 Compatibility</h4>
+            <p>
+              Can a target object fit inside or on top of another object? Requires understanding of relative
+              sizes and geometric compatibility.
+            </p>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="task-card">
+            <img src="static/images/cup.gif" alt="Occlusion task example"
+                 style="width: 100%; border-radius: 8px; margin-bottom: 1rem;"/>
+            <h4>🔭 Occlusion</h4>
+            <p>
+              Will moving an object cause another to become hidden? Tests understanding of line-of-sight
+              and spatial blocking relationships.
+            </p>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="task-card">
+            <img src="static/images/billiards.gif" alt="Trajectory task example"
+                 style="width: 100%; border-radius: 8px; margin-bottom: 1rem;"/>
+            <h4>🛤️ Trajectory</h4>
+            <p>
+              What path will a displaced object follow? Models must predict motion trajectories given
+              scene geometry and physics.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Results & Analysis -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Results &amp; Analysis</h2>
+      <div class="stats-bar">
+        <div class="columns is-centered has-text-centered">
+          <div class="column stat-item">
+            <div class="stat-number">84%</div>
+            <div class="stat-label">Human Accuracy</div>
+          </div>
+          <div class="column stat-item">
+            <div class="stat-number">54%</div>
+            <div class="stat-label">GPT-5 Accuracy</div>
+          </div>
+          <div class="column stat-item">
+            <div class="stat-number">30%</div>
+            <div class="stat-label">Human&ndash;AI Gap</div>
+          </div>
+          <div class="column stat-item">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Task Categories</div>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered" style="margin-top: 2.5rem;">
+        <div class="column is-four-fifths">
+          <h3 class="title is-4 has-text-centered" style="margin-bottom: 1.5rem;">Why Do MLLMs Fail?</h3>
+          <div class="content has-text-justified">
+            <p>
+              Despite achieving impressive results on static perception benchmarks, MLLMs exhibit a
+              <strong>fundamental deficiency</strong> on causal spatial reasoning: they over-rely on
+              textual chain-of-thought reasoning that drifts away from visual evidence. The models
+              produce responses that sound linguistically plausible but are <em>spatially ungrounded</em>
+              &mdash; a form of hallucination specific to physical scene understanding.
+            </p>
+            <p>
+              Our analysis identifies two key failure modes: (1) models anchor their reasoning to
+              object <em>semantic categories</em> rather than actual geometry, and (2) chain-of-thought
+              narration compounds errors by reinforcing early incorrect spatial assumptions.
+              This reveals that scaling language reasoning alone is insufficient &mdash;
+              models need explicit grounding in observable physical dynamics.
+            </p>
+          </div>
+          <figure class="image" style="margin-top: 1.5rem;">
+            <img src="static/images/Failure_page_1.png" alt="Failure analysis of MLLMs on causal spatial reasoning"
+                 style="border-radius: 12px; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);"/>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Method: COW -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Method: Causal Object World (COW)</h2>
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <div class="content has-text-justified">
+            <p>
+              To address this, we propose the <strong>Causal Object World (COW)</strong> model. COW
+              externalizes the reasoning process by <em>generating videos</em> that simulate hypothetical
+              physical dynamics. Instead of relying on language patterns, COW provides the model with
+              explicit visual evidence of what would happen, enabling grounded causal reasoning.
+            </p>
+            <p>
+              By making the causal consequences <em>visually observable</em>, COW bridges the gap between
+              static scene perception and dynamic physical reasoning, bringing model performance
+              significantly closer to human-level accuracy.
+            </p>
+          </div>
+          <figure class="image" style="margin-top: 1.5rem;">
+            <img src="static/images/Pipeline_page_1.png" alt="Causal Object World (COW) method overview"
+                 style="border-radius: 12px; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);"/>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BibTeX -->
+  <section class="section is-light" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@article{ma2026causalspatial,
+  title     = {CausalSpatial: A Benchmark for Object-Centric Causal Spatial Reasoning},
+  author    = {Ma, Wenxin and Wang, Chenlong and Yuan, Ruisheng and Chen, Hao and
+               Dai, Nanru and Zhou, S. Kevin and Yang, Yijun and Yuille, Alan and Chen, Jieneng},
+  journal   = {arXiv preprint arXiv:2601.13304},
+  year      = {2026},
+  url       = {https://arxiv.org/abs/2601.13304}
+}</code></pre>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content has-text-centered">
+            <p>
+              This page was built using the
+              <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">
+                Academic Project Page Template
+              </a>
+              which was adopted from the
+              <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              This website is licensed under a
+              <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+                Creative Commons Attribution-ShareAlike 4.0 International License
+              </a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
